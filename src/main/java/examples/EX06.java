@@ -59,7 +59,7 @@ public class EX06 {
         Random rnd = new Random(); // 난수생성을 위한 객체 정의
         String lottokey = "";
 
-        // nextInt(경계값) : 0 ~ 경계값 - 사이의 정수 난수 출력
+        // nextInt(경계값) : 0 ~ 경계값 -1 사이의 정수 난수 출력
         // 1 ~ 9 사이의 임의의 정수 3개를 난수로 생성
         for (int i = 0; i < 3; i++) {
             lottokey +=  rnd.nextInt(9) + 1;   // 0 ~ 8 + 1
