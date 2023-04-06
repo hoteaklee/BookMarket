@@ -11,20 +11,6 @@ public class EX06 {
 //        나. 변수에 임의의 복권 숫자 3자리를 초기화합니다 (lottokey)
 //        다. 사용자가 입력한 복권 숫자가 모두 일치 : 상금 1백만 지급
 //        라. 일치하지 않는 경우 : “아쉽지만, 다음 기회를!” 라고 출력
-//        int[] yourkey = new int[3];
-//        int[] lottokey = {1,2,3};
-//        String result = "";
-//        for (int i = 0; i < yourkey.length; i++) {
-//        Scanner sc = new Scanner(System.in);
-//            System.out.print((i+1) + "번째 번호?");
-//        yourkey[i] = sc.nextInt();
-//
-//            for (int j = 0; j < lottokey.length; j++) {
-//                if (yourkey[i] == lottokey[j]) result = "상금 1백만 지급";
-//                else result = "아쉽지만, 다음 기회를!";
-//            }
-//        }
-//        System.out.println(result);
 
 /*        //25 - 복권 발행 프로그램 : Lotto
         // 위치에 상관 없이 숫자만 맞으면 일치하는 것으로 인정!
@@ -97,16 +83,24 @@ public class EX06 {
 //                나. 변수에 임의의 숫자 3자리를 초기화합니다 (num2)
 //                다. num1이 num2보다 크면 “추측한 숫자가 큽니다”라고 출력하세요
 //                라. num1이 num2보다 작으면 “추측한 숫자가 작습니다”라고 출력하세요력하고 종료
-//            int[] num1 = new int[1];
-//            int[] num2 = {1};
-//        int num2 = 10;
-//        result = "";
-//        System.out.print("1 ~100 사이의 숫자 입력: ");
-//        Scanner sc = new Scanner(System.in);
-//         int num1 = sc.nextInt();
-//         if (num1 > num2) result = "추측한 숫자가 큽니다";
-//         else result = "추측한 숫자가 작습니다";
-//        System.out.println(result);
+        rnd = new Random(); // 난수생성을 위해 다기 초기화 (위에 로또에서 사용했기때문)
+        int num2 = rnd.nextInt(100) + 1;    // ( 0~99 ) + 1
+
+        for (int i = 0; i <10; i++) {
+            System.out.print("숫자는(1~100) ? ");
+            int num1 = sc.nextInt();
+
+            result = "";
+            if (num1 > num2) result = "추측한 숫자가 큽니다";
+            else if (num1 < num2) result = "추측한 숫자가 작습니다.";
+            else if (num1 == num2) {
+                result = "빙고! 숫자를 맞췄습니다.";
+                System.out.println(result); // break때문에 밑에서 출력이 안되서 여기도 추가함
+                break;
+            }
+
+            System.out.println(result);
+        }
 
 
 //        32. 키보드로 정수를 하나 입력받아 다음 조건에 따라 결과를 출력하는 프로그램을 작성하시오. (CheckNumber)
@@ -114,25 +108,35 @@ public class EX06 {
 //        나. 입력한 값이 10000 이상 20000미만 이면 “10000~20000” 이라 출력
 //        다. 입력한 값이 20000 이상 30000미만 이면 “20000~30000” 이라 출력
 //        라. 입력한 값이 그 이외 값이면 “범위 밖 값” 이라 출력
-//            result = "";
-//            System.out.print("1~40000 사이 입력: ");
-//             int num = sc.nextInt();
-//             if (num < 10000) result = "10000미만";
-//             else if (num < 20000) result ="10000~20000";
-//             else if (num < 30000) result ="20000~30000";
-//             else result = "범위 밖 값";
-//        System.out.println(result);
+        System.out.print(" CheckNumber 값은? ");
+        int val = sc.nextInt();
+
+        result = "";
+        if (val >= 20000 && val > 30000) result = "20000 ~ 30000사이";
+        else if (val >= 10000) result = "10000 ~ 20000사이";
+        else if (val < 10000) result = "10000미만";
+        else result = "범위 밖 값!";
+
+        System.out.println(result);
+
 
        //48. 지금 현재 수지의 통장잔액이 25,000원이다.
         // 은행이자가 연 6%라 가정할 때,
         // 몇 년이 지나야 통장잔액이 지금의 2배를 넘는지
-        // 알아보는 프로그램을 아래 그림을 참고하여 작성하여라. (ComputeInvestment)
-        // 1년 * 0.06 =
-//        int money = 25000;
-//        //int inter = year * 0.06;
-//        for (int i = 0;  ; i++) {
-//
-//        }
+        // 알아보는 프로그램을 아래 그림을 참고하여 작성하여라. (복리계산 ComputeInvestment)
+        int account = 25000;    // 잔액
+        double interest = 0.06; //연 이율
+
+        String fmt = "%2d 년차 통장 잔액: %d\n";
+        int limit = account * 2;
+
+        for (int i = 1; i <=20 ; i++) {
+            account = account + (int)(account * interest);
+            System.out.printf(fmt,i,account);
+            if (account >= limit) break;
+        }
+
+
 
 
 
