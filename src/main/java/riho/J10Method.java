@@ -1,5 +1,7 @@
 package riho;
 
+import java.util.Scanner;
+
 public class J10Method {
     public static void main(String[] args) {
         //메서드
@@ -24,6 +26,25 @@ public class J10Method {
         System.out.println(showAMPM(time));
 
         System.out.println(showStarPyramid(5));
+
+        // ex)성적 처리프로그램 v4
+        String[] names = new String[3];
+        int[] kors = new int[3];
+        int[] engs = new int[3];
+        int[] mats = new int[3];
+
+        int[] tots = new int[3];
+        double[] avgs = new double[3];
+        String[] grds = new String[3];
+
+        readSungJuk(names,kors,engs,mats);
+        computesSungjuk(kors,engs,mats,tots,avgs,grds);
+        printSungJuk(names,kors,engs,mats,tots,avgs,grds);
+
+        // 만일, 2 과목이 추가된다면?
+        //메소드 호출부 수저으 메서드 선언부 수정
+        // 과목 입력 수정, 성적처리 수정, 성적 출력 수정
+
 
 
     }
@@ -76,6 +97,56 @@ public class J10Method {
            result +="\n"; //줄바꿈
         }
         return result;
+    }
+
+
+    // ex)성적 처리프로그램 v4
+    // 3명의 학생에 대해
+    // 이름, 국어, 영어, 수학을  키보드로 입력받아
+    // 총접, 평균, 학점을 계산한 뒤 결과 출력
+    // 학점은 수우미양가 중 하나가 출력되어야 함
+    // 단, 메서드로 기능을 모듈화 시켜 작성
+    public static void readSungJuk(String[] names, int[] kors, int[] engs, int[] mats){
+
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < names.length ; i++) {
+            System.out.print((i + 1) + "번 학생이름은??");
+            names[i] = sc.next();
+            System.out.print((i + 1) + "국어 점수?");
+            kors[i] = sc.nextInt();
+            System.out.print((i + 1) + "영어 점수?");
+            engs[i] = sc.nextInt();
+            System.out.print((i + 1) + "수학 점수?");
+            mats[i] = sc.nextInt();
+        }   //성적 데이터 입력
+    }
+
+    public static void computesSungjuk(int[] kors, int[] engs, int[] mats,
+                                    int[] tots, double[] avgs, String[] grds){
+
+        for (int i = 0; i < kors.length; i++) {
+            tots[i] = kors[i] + engs[i] + mats[i];
+            avgs[i] = tots[i]/ 3;
+
+            switch ((int)avgs[i]/10){
+                case 10:
+                case 9: grds[i]= "수";break;
+                case 8:  grds[i]= "우";break;
+                case 7:  grds[i]= "미";break;
+                case 6: grds[i]= "양";break;
+                default :  grds[i]= "가";break;
+            }
+        }   //성적 처리
+    }
+
+   public static void printSungJuk(String[] names,int[] kors, int[] engs, int[] mats,
+                 int[] tots, double[] avgs, String[] grds){
+        String result = "";
+        for (int i = 0; i < names.length; i++) {
+            result += String.format("%s %d %d %d \n",names[i],kors[i],engs[i],mats[i]);
+            result += String.format("%d %.1f %s \n",tots[i],avgs[i],grds[i]);
+        }   // 결과 출력 준비
+       System.out.println(result);
     }
 
 
