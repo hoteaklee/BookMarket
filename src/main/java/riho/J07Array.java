@@ -106,6 +106,7 @@ public class J07Array {
         int[] kors = new int[3];
         int[] engs = new int[3];
         int[] mats = new int[3];
+
         int[] tots = new int[3];
         double[] avgs = new double[3];
         String[] grds = new String[3];
