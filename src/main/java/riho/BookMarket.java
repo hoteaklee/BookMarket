@@ -6,6 +6,8 @@ public class BookMarket {
     public static void main(String[] args) {
         BookMarketService bksrv = new BookMarketService();
 
+        bksrv.registerMember(); //회원 등록
+
         while (true) {
             // bookmatket 메뉴 작성
             String menu = bksrv.displayMenu();

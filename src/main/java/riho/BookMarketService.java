@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class BookMarketService {
     private Scanner sc = null;  // 기능을 수행하기 위한 변수 (값을 넣는것은 아님)
+    private MemberShip m = null;    //회원정보 저장용
     public  BookMarketService() {
         sc = new Scanner(System.in);
     }
@@ -29,10 +30,13 @@ public class BookMarketService {
         return menu;
     }
 
+   //메뉴 분기 처리
     public void processMenu(String menu){
         switch (menu){
             case "1":
-                System.out.println("\n고객정보 확인"); break;
+                System.out.println("\n고객정보 확인");
+                 System.out.println(m);
+                break;
             case "2":
                 System.out.println("\n장바구니 상품 목록\n"); break;
             case "3": System.out.println("\n장바구니 비우기\n"); break;
@@ -48,4 +52,17 @@ public class BookMarketService {
         }   //switch
 
     }
+
+    //회원 등록
+    public void registerMember(){
+        System.out.print("회원이름은?");
+        String name = sc.next();
+        System.out.print("회원 이메일은?");
+        String email = sc.next();
+        System.out.print("회원 전화번호은?");
+        String hp = sc.next();
+
+        m = new MemberShip(230410,name,email, hp);
+    }
+
 }
