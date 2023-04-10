@@ -17,11 +17,8 @@ public class SungjukV1Main {
     public static void main(String[] args) {
         SungjukV1Service sjsrv = new SungjukV1Service();
 
-        //점수 등록
-        sjsrv.registerSungjuk();
-
         while (true) {
-            //성적 리스트 작성
+            //성적 프로그램 메뉴 작성
             String menu = sjsrv.displayMenu();
 
             // 입력한 리스트에 따라 작업 분기
