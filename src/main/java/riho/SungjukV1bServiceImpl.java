@@ -85,6 +85,21 @@ public class SungjukV1bServiceImpl implements SungjukV1bSerive {
     }
 
     public void readOneSungjuk() {
+        // 이름입력 -> 대상 검색 -> 대상출력
+        System.out.println(" 조회할 학생이름은?? ");
+        String name = sc.next();    //이름입력
+
+        SungjukVO one = null;   //대상검색
+        for (SungjukVO sj : sjs){
+            if (sj != null && sj.getName().equals(name)){
+                one = sj; break;
+            }
+        }
+        if (one != null){
+            System.out.println(one);
+        } else {
+            System.out.println("\n찾는 데이터가 없습니다.!\n");
+        }
     }
 
     public void modifySungjuk() {
