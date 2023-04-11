@@ -77,7 +77,7 @@ public class SungjukV1bServiceImpl implements SungjukV1bSerive {
 
     // 성적 리스트 조회 (이름,국어,영어,수학)
     public void readSungjuk() {
-        String fmt = "%s %d %d %d\n";
+        String fmt = "\n%s %d %d %d\n";
         for ( SungjukVO sj : sjs ){
             if (sj != null) //배열에 성적데이터가 존재한다면 출력
             System.out.printf(fmt,sj.getName(),sj.getKor(),sj.getEng(),sj.getMat());
@@ -96,19 +96,39 @@ public class SungjukV1bServiceImpl implements SungjukV1bSerive {
             }
         }
         if (one != null){
-            System.out.println(one);
+            System.out.printf("\n%s\n",one);
         } else {
             System.out.println("\n찾는 데이터가 없습니다.!\n");
         }
     }
 
     public void modifySungjuk() {
+        // 이름입력 -> 대상검색 -> 새로운데이터입력 -> 성적처리
+        System.out.print(" 수정할 학생이름은?? ");
+        String name = sc.next();    //이름입력
 
+        for (int i = 0; i < sjs.length; i++) {
+            if (sjs[i] != null && sjs[i].getName().equals(name)){
+                System.out.print("국어 점수는? ");
+                int kor = sc.nextInt();
+                System.out.print("영어 점수는? ");
+                int eng = sc.nextInt();
+                System.out.print("수학 점수는? ");
+                int mat = sc.nextInt();
+
+                SungjukVO sj = new SungjukVO(name,kor, eng, mat);
+                computeSungjuk(sj); //총점,평균,학점 다시 계산
+                sjs[i] = sj;    // 기존 성적데이터 위치에 새롭게 생성한 객체 대입
+
+                System.out.println("\n수정 완료!!\n");
+                break;
+            }
+        }
     }
 
     public void removeSungjuk() {
         // 이름입력 -> 대상 검색 -> 대상제거
-        System.out.println(" 삭제할 학생이름은?? ");
+        System.out.print(" 삭제할 학생이름은?? ");
         String name = sc.next();    //이름입력
 
         for (int i = 0; i < sjs.length ; i++) {
