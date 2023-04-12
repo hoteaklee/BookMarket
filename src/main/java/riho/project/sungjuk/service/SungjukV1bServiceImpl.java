@@ -1,4 +1,6 @@
-package riho;
+package riho.project.sungjuk.service;
+
+import riho.project.sungjuk.model.SungjukVO;
 
 import java.util.Scanner;
 
@@ -132,7 +134,7 @@ public class SungjukV1bServiceImpl implements SungjukV1bSerive {
         String name = sc.next();    //이름입력
 
         for (int i = 0; i < sjs.length ; i++) {
-            if (sjs != null && sjs[i].getName().equals(name)){
+            if (sjs[i] != null && sjs[i].getName().equals(name)){
                 sjs[i] = null;  // 삭제할 배열요소에 null을 대입(해서 삭제)
                 System.out.println("\n삭제되었습니다.\n");
                 break;

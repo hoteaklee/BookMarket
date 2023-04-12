@@ -1,6 +1,6 @@
 package examples;
 
-import riho.SungjukVO;
+import riho.project.sungjuk.model.SungjukVO;
 
 public class EX09 {
     public static void main(String[] args) {

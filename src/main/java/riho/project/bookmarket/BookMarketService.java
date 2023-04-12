@@ -1,4 +1,6 @@
-package riho;
+package riho.project.bookmarket;
+
+import riho.project.MemberShip;
 
 import java.util.Scanner;
 

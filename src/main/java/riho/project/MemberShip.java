@@ -1,4 +1,4 @@
-package riho;
+package riho.project;
 
 public class MemberShip {
     private int mno;

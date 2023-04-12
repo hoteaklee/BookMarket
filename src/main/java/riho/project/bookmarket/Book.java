@@ -1,4 +1,4 @@
-package riho;
+package riho.project.bookmarket;
 
 public class Book {
     private String isbn;

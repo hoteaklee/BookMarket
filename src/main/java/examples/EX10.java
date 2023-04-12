@@ -1,6 +1,6 @@
 package examples;
 
-import riho.SungjukVO;
+import riho.project.sungjuk.model.SungjukVO;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package riho;
+package riho.project.sungjuk.model;
 
 public class SungjukVO {
     private String name;

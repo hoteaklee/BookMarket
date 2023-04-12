@@ -1,4 +1,4 @@
-package riho;
+package riho.project.bookmarket;
 
 public class BookMarket {
     // 프로그램 실행 흐름

@@ -1,4 +1,6 @@
-package riho;
+package riho.project.sungjuk.service;
+
+import riho.project.sungjuk.model.SungjukVO;
 
 import java.util.Scanner;
 
@@ -24,7 +26,7 @@ public class SungjukV1Service {
         .append("5. 성적데이터 삭제\n")
         .append("0. 프로그램 종료\n")
         .append("-------------------------------\n")
-        .append("작업을 선택하세요 : \n");
+        .append("작업을 선택하세요 : ");
         System.out.println(sb);
         String menu = sc.next();
 
