@@ -1,7 +1,6 @@
 package riho.project.sungjuk;
 
 import riho.project.sungjuk.service.SungjukV1cSerive;
-import riho.project.sungjuk.service.SungjukV1cServiceImpl;
 import riho.project.sungjuk.service.SungjukV2ServiceImpl;
 
 public class SungjukV2Main {
