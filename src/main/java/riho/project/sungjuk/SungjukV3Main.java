@@ -9,6 +9,7 @@ public class SungjukV3Main {
     // 성적을 입력하면  총점,평균,학점을 계산함
     // 입력가능한 학생 성적 데이터는 최대 10명까지
     // SungjukV3Main , SungjukVO, SungjukV1cService, SungjukV3ServiceImpl
+    // SungjukV3DAO, SungjukV3DAOImpl
     // sungjukv3.dat 에 데이터 저장
     //1. 성적데이터 입력
     //2. 성적데이터 조회 (이름,국어,영어,수학)

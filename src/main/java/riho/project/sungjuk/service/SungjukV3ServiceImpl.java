@@ -1,5 +1,7 @@
 package riho.project.sungjuk.service;
 
+import riho.project.sungjuk.dao.SungjukV3DAO;
+import riho.project.sungjuk.dao.SungjukV3DAOImpl;
 import riho.project.sungjuk.model.SungjukVO;
 
 import java.io.*;
@@ -11,15 +13,13 @@ import java.util.Scanner;
 public class SungjukV3ServiceImpl implements SungjukV1cSerive {
     private Scanner sc = null;
     private List<SungjukVO> sjs = null; //성적 저장
-    private String fname = "c:/Java/sungjukv3.dat";
-    private FileWriter fw = null;
-    private FileReader fr = null;
-    private BufferedWriter bw = null;
-    private BufferedReader br = null;
+    private SungjukV3DAO sjdao = null;
+
 
     public SungjukV3ServiceImpl(){
         sc= new Scanner(System.in);
         sjs = new  ArrayList<>();
+        sjdao = new SungjukV3DAOImpl();
     }
 
     //성적 프로그램 메뉴
@@ -88,21 +88,10 @@ public class SungjukV3ServiceImpl implements SungjukV1cSerive {
         SungjukVO sj = new SungjukVO(name,kor,eng,mat);
         computeSungjuk(sj);    // 성적처리 (총점, 평균,학점)
 
-        // 생성된 성적데이터를 파일에 저장
-        try {
-            // 파일기록시 추가append 기능 활성화
-            fw = new FileWriter(fname,true);
-            bw = new BufferedWriter(fw);
+        // 성적데이처에 파일에 저장
+        if (sjdao.saveSungjuk(sj) )
+            System.out.println("파일 저장성공");
 
-            bw.write(sj.toString());
-        } catch (Exception ex) {
-            System.out.println("성적 데이터 저장중 오류 발생!");
-            System.out.println(ex.getMessage());
-        } finally {
-            // 파일쓰기가 끝나면 작업 종료
-            if (bw != null) try {bw.close();} catch (Exception ex){}
-            if (fw != null) try {fw.close();} catch (Exception ex){}
-        }
 
     }
 
