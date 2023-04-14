@@ -18,7 +18,8 @@ public class SungjukV3ServiceImpl implements SungjukV1cSerive {
 
     public SungjukV3ServiceImpl(){
         sc= new Scanner(System.in);
-        sjs = new  ArrayList<>();
+        // 파일에 저장된 데이터를 모두 읽어서 arrayList 객체에 저장
+        sjs = sjdao.loadSungjuk();
         sjdao = new SungjukV3DAOImpl();
     }
 
@@ -130,6 +131,8 @@ public class SungjukV3ServiceImpl implements SungjukV1cSerive {
         String name = sc.next();    //이름입력
 
         SungjukVO one = null;   //대상검색
+
+
 
         try {
             for (SungjukVO sj : sjs) {

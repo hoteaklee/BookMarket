@@ -55,10 +55,8 @@ public class SungjukV3DAOImpl implements SungjukV3DAO{
                 String[] val = br.readLine().split("[ ]"); //파일에 한줄 읽어서 뛰어쓰기로 분류
                 // Sungjuk 객체에 개별 값을 저장하고
                 SungjukVO sj = new SungjukVO(
-                        val[0],Integer.parseInt(val[1]),Integer.parseInt(val[2]),Integer.parseInt(val[3]));
-                sj.setTot(Integer.parseInt(val[4]));
-                sj.setAvg(Double.parseDouble(val[5]));
-                sj.setGrd( val[6] );
+                        val[0],Integer.parseInt(val[1]),Integer.parseInt(val[2]),Integer.parseInt(val[3]),
+                Integer.parseInt(val[4]),Double.parseDouble(val[5]),val[6] );
 
                 // ArrayList 객체에 저장
                 sjdata.add(sj);

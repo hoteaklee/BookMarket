@@ -19,6 +19,13 @@ public class SungjukVO {
         this.mat = mat;
     }
 
+    public SungjukVO(String name, int kor, int eng, int mat, int tot, double avg, String grd) {
+        this(name, kor, eng, mat);  //SungjukVO
+        this.tot = tot;
+        this.avg = avg;
+        this.grd = grd;
+    }
+
     public String getName() {
         return name;
     }
