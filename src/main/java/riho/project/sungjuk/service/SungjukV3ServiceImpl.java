@@ -90,7 +90,7 @@ public class SungjukV3ServiceImpl implements SungjukV1cSerive {
 
         // 성적데이처에 파일에 저장
         if (sjdao.saveSungjuk(sj) )
-            System.out.println("파일 저장성공");
+            System.out.println("파일 저장성공\n");
 
 
     }
@@ -113,6 +113,10 @@ public class SungjukV3ServiceImpl implements SungjukV1cSerive {
     // 성적 리스트 조회 (이름,국어,영어,수학)
     public void readSungjuk() {
         String fmt = "\n%s %d %d %d\n";
+
+        // 파일에 저장된 데이터를 모두 읽어서 arrayList 객체에 저장
+        sjs = sjdao.loadSungjuk();
+
         try {
             for (SungjukVO sj : sjs) {
                 System.out.printf(fmt, sj.getName(), sj.getKor(), sj.getEng(), sj.getMat());
