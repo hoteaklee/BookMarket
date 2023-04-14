@@ -13,7 +13,7 @@ public class J27JDBC {
     private static String USR = "admin";
     private static String PWD = "fullstack_2023";
 
-    private static String insertBookSQL = "insert into newbooks (title,writer,price) values(?,?,?,)";
+    private static String insertBookSQL = "insert into newbooks (title,writer,price) values(?,?,?)";
     public static void main(String[] args) {
         // newbooks 테이블에 도서정보 저장
         Scanner sc = new Scanner(System.in);
