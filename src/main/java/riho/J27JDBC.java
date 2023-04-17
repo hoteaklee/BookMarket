@@ -8,10 +8,6 @@ import java.util.Scanner;
 
 public class J27JDBC {
     // 2. 데이터베이스 서버에 접속하기
-    private static String DRV = "org.mariadb.jdbc.Driver";
-   private static String URL = "jdbc:mariadb://fullstacks.chpty04rh0pr.ap-northeast-2.rds.amazonaws.com:3306/fullstacks";
-    private static String USR = "admin";
-    private static String PWD = "fullstack_2023";
 
     private static String insertBookSQL = "insert into newbooks (title,writer,price) values(?,?,?)";
     public static void main(String[] args) {
@@ -25,18 +21,13 @@ public class J27JDBC {
         int price = sc.nextInt();
 
         // 1. JDBC 드라이버를 메모리에 적재
-        try {
-            Class.forName(DRV);
-        } catch (ClassNotFoundException e) {
-            System.out.println("mriadb 용 JDBC 드라이버가 없어요!");
-        }
 
         Connection conn = null;
         PreparedStatement pstmt = null;
 
         try {
             //데이터베이스 등록
-            conn = DriverManager.getConnection(URL,USR,PWD);    //데이터서버 연결
+            conn = J32JDBCUtil.makeConn();
             // 실행할 SQL문 생성
             pstmt = conn.prepareStatement(insertBookSQL);
             // 실행할 SQL문의 placeholder에 값 전달 (?,?,?)
@@ -51,8 +42,11 @@ public class J27JDBC {
         } catch (SQLException e) {
             System.out.println("디비 접속주소나 아이디/비번, SQL문을 확인하세요!!");
         } finally {
-            if(pstmt != null) try{pstmt.close();} catch (Exception ex){}
-            if(conn != null) try{conn.close();} catch (Exception ex){}
+//            if(pstmt != null) try{pstmt.close();} catch (Exception ex){}
+//            if(conn != null) try{conn.close();} catch (Exception ex){}
+            // static으로 선언된 메서드는 객체 생성 없이 바로 호출가능
+            //단, 클래스명.메서드명으로 호출하야 함
+            J32JDBCUtil.closeConn(null,pstmt,conn);
         }
 
     }
