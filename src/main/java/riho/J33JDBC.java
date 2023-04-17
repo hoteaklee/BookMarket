@@ -51,6 +51,12 @@ public class J33JDBC {
         }
 
         //사원 상세조회
+        System.out.println("조회할 사원번호는?");
+        int empno = sc.nextInt();
+
+        EMPVO emp = EMPDAOImpl.insertOneEmp(empno);
+        if (emp!= null) System.out.println(emp);
+        else System.out.println("일치하는 번호가 없습니다.");
 
         //사워 수정
 
@@ -252,18 +258,37 @@ class EMPDAOImpl{  //공유객체사용 (static사용)
             J34JDBCUtil.closeConn(rs,pstmt,conn);
         }
         return empdata;}
+
+
     public static EMPVO insertOneEmp(int empno){
         Connection conn = null;
         PreparedStatement pstmt = null;
-        try {
+        ResultSet rs = null;
+        EMPVO emp = null;
 
+        try {
+            conn = J34JDBCUtil.makeConn();
+            pstmt = conn.prepareStatement(selectOneEmpSQL);
+            pstmt.setInt(1,empno);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()){
+                emp = new EMPVO(rs.getInt(1),rs.getString(2),rs.getString(3)
+                        ,rs.getString(4),rs.getString(5),rs.getString(6)
+                        ,rs.getString(7),rs.getInt(8),rs.getDouble(9)
+                        ,rs.getInt(10),rs.getInt(11));
+
+            }
         } catch (Exception ex){
-            System.out.println("insertOneEmp 오류 발생!!");
+            System.out.println("insertOneEmpdp에서 오류 발생!!");
             System.out.println(ex.getMessage());
         } finally {
-            J34JDBCUtil.closeConn(null,pstmt,conn);
+            J34JDBCUtil.closeConn(rs,pstmt,conn);
         }
-        return null;}
+        return emp;}
+
+
     public static int updateOneEmp(EMPVO emp){
         Connection conn = null;
         PreparedStatement pstmt = null;
